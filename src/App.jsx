@@ -1,12 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const APOLOGY_LETTER_TEXT = `My dearest,
+const APOLOGY_LETTER_TEXT = `My dearest Jaana,
 
-I am so incredibly sorry for what happened. You mean the world to me, and seeing you hurt breaks my heart into pieces. I promise to do better, to listen more, and to cherish every moment we share. 
+I am so incredibly sorry for not giving u aftercare like what the fuck I mistreated u so much and I expected u to put up with my bull shit and that is just so wrong honey. I just want u to know baby YOU MEAN THE WORLD TO ME AND SEEIN U HURT BREAKS MY HEART INTO PIECES. i really promise to do better and ab toh i’ll give u extra aftercare and then ANOTHER ROUND YAY 😘! 
 
-Please forgive me. I love you more than words can express.
+Please forgive me sweetie I really mish u and I wanna talk to u rn can we do that pweaseee???
+I will dance for u as well jaana.
 
-Yours always.`;
+I will get u more plushies flowers and gifts as well honeyyy.
+
+Your monkey,
+Yours always, 
+Adi <3.`;
 
 // Components
 const HeartIcon = ({ className, style }) => (
