@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const APOLOGY_LETTER_TEXT = `My dearest,
 
@@ -82,6 +82,16 @@ export default function App() {
   const [floatingHearts, setFloatingHearts] = useState([]);
   const [mendCount, setMendCount] = useState(0);
   const [letterOpen, setLetterOpen] = useState(false);
+  
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const playAudio = () => {
+    if (!isPlaying && audioRef.current) {
+      audioRef.current.volume = 0.5;
+      audioRef.current.play().catch(e => console.log(e));
+      setIsPlaying(true);
+    }
+  };
 
   // Initialize Game 1
   useEffect(() => {
@@ -123,6 +133,7 @@ export default function App() {
   }, [step]);
 
   const catchHeart = (id) => {
+    playAudio();
     setFloatingHearts(prev => prev.map(h => h.id === id ? { ...h, caught: true } : h));
     const newCaught = heartsCaught + 1;
     setHeartsCaught(newCaught);
@@ -150,6 +161,7 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center font-sans overflow-hidden text-white bg-black">
+      <audio ref={audioRef} src="/music.webm" loop />
       <Background />
       
       <div className="relative z-10 w-full h-full min-h-screen flex flex-col items-center justify-center px-4">
@@ -224,7 +236,7 @@ export default function App() {
         {step === 3 && (
           <div className="flex flex-col items-center justify-center h-full w-full">
             <h1 
-              className="text-5xl md:text-6xl lg:text-7xl font-light text-center tracking-wider text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.6)] motion-safe:animate-[float-slow_4s_ease-in-out_infinite]"
+              className="text-6xl md:text-7xl lg:text-8xl text-glowy text-center tracking-widest text-white motion-safe:animate-[float-slow_4s_ease-in-out_infinite]"
               style={{ animation: 'fadeIn 3s ease-in forwards' }}
             >
               I'm so sorry baby...
